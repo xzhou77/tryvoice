@@ -56,9 +56,12 @@ recognition.onresult = (e) => {
     */
 
     switch (transcript) {
-        case "hello": utter.text = "Hi, how are you?"; break;
-        case "goodbye": utter.text = "Hope to see you soon!"; break;
-        case "something interesting": utter.text = "Have you heard about ChatGPT?"; break;
+        case "hello" || "Hello.": utter.text = "Hi, how are you?"; break;
+        case "goodbye" || "Goodbye.": utter.text = "Hope to see you soon!"; break;
+        case "something interesting" || "Something interesting.": utter.text = "Have you heard about ChatGPT?"; break;
+        case "company logo": utter.text = "The following is our brand: "; break;
+        case "company share": utter.text = " The following is our planned share structure: "; break;
+        case "balance sheet": utter.text = "The following is our estimation of balance sheet in 5 years: "; break;
         default: utter.text = "Sorry, I don't understand you. I am still learning."; 
      }
 
@@ -66,8 +69,19 @@ recognition.onresult = (e) => {
      message2.classList.add("container");
      messageArea.appendChild(message2);
      synth.speak(utter);
-
-
+     if (transcript === "company logo") {
+        const img = document.createElement("img");
+        img.src = "assets/BioSycle_logo.jpg";
+        messageArea.appendChild(img);
+     } else if (transcript === "company share") {
+        const img = document.createElement("img");
+        img.src = "assets/shares.jpg";
+        messageArea.appendChild(img);
+     } else if (transcript === "balance sheet") {
+        const img = document.createElement("img");
+        img.src = "assets/balance.jpg";
+        messageArea.appendChild(img);
+     }
 
     /* Always scroll to the latest*/
     messageArea.scrollTop = messageArea.scrollHeight;
