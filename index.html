@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Speech App</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h2></h2>
+    <button id="start-btn" style="background-color: lightseagreen;">Start Chat</button>
+   
+    <div id="messages" style="height:800px; overflow-y: auto;"></div>
+
+    <script>
+		var browserName = (function (agent) {
+         switch (true) {
+            case agent.indexOf("edge") > -1: return "MS Edge";
+            case agent.indexOf("edg/") > -1: return "Edge ( chromium based)";
+            case agent.indexOf("opr") > -1 && !!window.opr: return "Opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "Chrome";
+            case agent.indexOf("trident") > -1: return "MS IE";
+            case agent.indexOf("firefox") > -1: return "Mozilla Firefox";
+            case agent.indexOf("safari") > -1: return "Safari";
+            default: return "other";
+         }
+        })(window.navigator.userAgent.toLowerCase());
+
+         document.querySelector("h2").innerText="You are using "+ browserName +" browser";  
+	</script>
+    <script src="index.js"></script>
+  </body>
+</html>
