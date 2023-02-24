@@ -55,6 +55,40 @@ recognition.onresult = (e) => {
     }
     */
 
+    switch (true) {
+        case transcript.indexOf("hello") > -1: 
+        case transcript.indexOf("Hello") > -1: utter.text = "Hi, how are you?"; break;
+        case transcript.indexOf("goodbye") > -1:
+        case transcript.indexOf("Goodbye") > -1: utter.text = "Hope to see you soon!"; break;
+        case transcript.indexOf("something interesting") > -1:
+        case transcript.indexOf("Something interesting") > -1: utter.text = "Have you heard about ChatGPT?"; break;
+        case transcript.indexOf("logo") > -1:
+        case transcript.indexOf("Logo") > -1: utter.text = "The following is our brand: "; break;
+        case transcript.indexOf("share") > -1:
+        case transcript.indexOf("Share") > -1: utter.text = " The following is our planned share structure: "; break;
+        case transcript.indexOf("Balance sheet") > -1:
+        case transcript.indexOf("balance sheet") > -1: utter.text = "The following is our estimation of balance sheet in 5 years: "; break;
+        default: utter.text = "Sorry, I don't understand you. I am still learning.";
+    }
+
+    message2.innerText = utter.text + " :XM";
+    message2.classList.add("container");
+    messageArea.appendChild(message2);
+    synth.speak(utter);
+    if (transcript.indexOf("logo") > -1) {
+       const img = document.createElement("img");
+       img.src = "assets/BioSycle_logo.jpg";
+       messageArea.appendChild(img);
+    } else if (transcript.indexOf("share") > -1) {
+       const img = document.createElement("img");
+       img.src = "assets/shares.jpg";
+       messageArea.appendChild(img);
+    } else if (transcript.indexOf("balance sheet") > -1) {
+       const img = document.createElement("img");
+       img.src = "assets/balance.jpg";
+       messageArea.appendChild(img);
+    }
+/*
     switch (transcript) {
         case "hello" || "Hello.": utter.text = "Hi, how are you?"; break;
         case "goodbye" || "Goodbye.": utter.text = "Hope to see you soon!"; break;
@@ -83,7 +117,8 @@ recognition.onresult = (e) => {
         messageArea.appendChild(img);
      }
 
+*/
+
     /* Always scroll to the latest*/
     messageArea.scrollTop = messageArea.scrollHeight;
-
 };
