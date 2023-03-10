@@ -13,7 +13,6 @@ const backButton = document.getElementById("xm_chat_menu");
 // user and password
 var uname =   'user';
 var passwd = 'test';
-var listen = 0;
 
 //Current settings
 var cs_settings = {lang : "en-US", mute: "no", start: "off"};
@@ -29,12 +28,10 @@ recognition.maxAlternatives = 1;
 const synth = window.speechSynthesis;
 
 let utter = new SpeechSynthesisUtterance("Hi, how are you?");
+let current_volume = 0.8;
 utter.onend = () => {
     if (document.getElementById("xm-chat").style.display != "none") {
-        if (listen === 0) {
             recognition.start();
-            listen = 1;
-        }
     }    
 };
 
@@ -48,7 +45,6 @@ recognition.onresult = async (e) => {
     message2.style.backgroundColor ="#ddd";
 
     recognition.stop();
-    listen = 0;
     message1.innerText="You:  "+ transcript; 
     message1.classList.add("container");
     messageArea.appendChild(message1);
@@ -94,10 +90,9 @@ recognition.onresult = async (e) => {
     if (cs_settings.mute === "no") {
         synth.speak(utter);
     } else {
-        if (listen === 0) {
-            recognition.start();
-            listen = 1;
-        }
+        utter.volume = 0;
+        synth.speak(utter);
+        utter.volume = current_volume;
     }
 
     if (transcript.indexOf("logo") > -1) {
@@ -189,7 +184,12 @@ loginButton1.addEventListener("click", (e) => {
 
 voiceButton.addEventListener("click", (e) => {
     e.preventDefault();
-
+    if (cs_settings.start === "on") {
+        cs_settings.start = "off";
+        startBtn.innerHTML = "Start ";
+        startBtn.style.backgroundColor = "lightseagreen";
+        recognition.stop();
+    }
     document.getElementById("xm-voice").style.display = "inline";
     document.getElementById("xm-chat").style.display = "none";
     document.getElementById("login-try").style.display = "none";
@@ -219,13 +219,11 @@ startBtn.addEventListener("click", () => {
         startBtn.innerHTML = "Stop ";
         startBtn.style.backgroundColor = "red";
         recognition.start();
-        listen = 1;
       } else {
         cs_settings.start = "off";
         startBtn.innerHTML = "Start ";
         startBtn.style.backgroundColor = "lightseagreen";
         recognition.stop();
-        listen = 0;
       }
 });
 
