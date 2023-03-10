@@ -6,12 +6,82 @@
     <meta name="theme-color" content="#000000" />
     <title>Speech App</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
   </head>
   <body>
-    <h2></h2>
-    <button id="start-btn" style="background-color: lightseagreen;">Start Chat</button>
-   
-    <div id="messages" style="height:700px; overflow-y: auto;"></div>
+    <div id="xm-chat" style="display: inline;">
+        <div style = "width: 10%; float: left; align-content: left;">     
+            <h3></h3>
+            </p>
+            <button id="xm_login_menu" class="menubtn" style="background-color: lightsalmon;">Login</button>
+            </p>
+            <button id="xm_voice_menu" class="menubtn" style="background-color: lightskyblue;">Conf</button>
+            </p>
+     <!--      <button id="xm_lang_menu" class="menubtn" style="background-color: lightskyblue;">Lang  </button>
+          </p>
+    //        <button id="xm_mute_menu" class="menubtn" style="background-color: lightskyblue;">Mute  </button>
+    -->      </p>
+            <button id="start-btn" class="menubtn" style="background-color: lightseagreen;">Start </button>
+        </div>
+        <div style = "margin-left: 10%;">
+            <div id="messages" style="height:42rem; width: 100%; overflow-y: auto; background-color: rgb(231, 230, 226);"></div>
+            <form>
+                <textarea name="prompt" rows="1" cols="77" placeholder="Ask XM ..."></textarea>
+                <button id="submit" class="menubtn" style="width: 3rem; height: 2rem;">Send</button>
+            </form>
+        </div>
+    </div>
+    <div id="xm-voice" style="display: none;">
+        <h3>Select Language</h2>
+        <button id="xm_lang_menu" class="menubtn" style="background-color: lightskyblue;">Chn  </button>
+        <h2>Mute the Assistant</h2>
+        <button id="xm_mute_menu" class="menubtn" style="background-color: lightskyblue;">Mute </button>
+        <h2>Select Voice</h2>
+        <select id="v_voices" class="form-select bg-secondary text-light"></select>
+        <div class="d-flex mt-4 text-light">
+            <div>
+                <p style="color:black;">Volume</p>
+                <input type="range" min="0" max="1" value="1" step="0.1" id="v_volume" />
+                <span id="volume-label" class="ms-2">1</span>
+            </div>
+            <div class="mx-5">
+                <p style="color:black;">Rate</p>
+                <input type="range" min="0.1" max="10" value="1" id="v_rate" step="0.1" />
+                <span id="rate-label" class="ms-2">1</span>
+            </div>
+            <div>
+                <p style="color:black;">Pitch</p>
+                <input type="range" min="0" max="2" value="1" step="0.1" id="v_pitch" />
+                <span id="pitch-label" class="ms-2">1</span>
+            </div>
+        </div>
+        <textarea id="trytext" class="form-control bg-dark text-light mt-5" cols="30" rows="10" placeholder="Type here..."></textarea>
+        <div class="mb-5">
+            <button id="v_start" class="btn btn-success mt-5 me-3">Start</button>
+            <button id="v_pause" class="btn btn-warning mt-5 me-3">Pause</button>
+            <button id="v_resume" class="btn btn-info mt-5 me-3">Resume</button>
+            <button id="v_cancel" class="btn btn-danger mt-5 me-3">Cancel</button>
+        </div>
+        </p>
+        <div>
+            <button id="xm_chat_menu" style="background-color: lightseagreen;">Back</button>
+        </div>
+    </div>
+    <div id="login-try" style = "display: none; width: 100%; height: 100%; padding: 30px; justify-content: center;">
+        <div style= "width: 100%; height: 50%; padding: 30px; justify-content: center;">
+          <input type="text" name="username" id="username-field" style= "height: 20%;" placeholder="Username">
+          <br>
+          <br>
+          <input type="password" name="password" id="password-field" style= "height: 20%;" placeholder="Password">
+          <br>
+          <br>
+          <button id="login_button" type="submit" style = "height: 20%; color: white;background-color: green; padding: 5px;">Login</button>    
+        </div>
+        <div style= "width: 100%; height: 100%; padding: 30px; justify-content: center;">
+          <img src="assets/BioSycle_logo.jpg" alt="BioSycle" width="150rem" height="150rem" />
+        </div>
+    </div>
+   </body>
 
     <script>
 		var browserName = (function (agent) {
@@ -25,10 +95,11 @@
             case agent.indexOf("safari") > -1: return "Safari";
             default: return "other";
          }
-        })(window.navigator.userAgent.toLowerCase());
+        }) (window.navigator.userAgent.toLowerCase());
 
-         document.querySelector("h2").innerText="You are using "+ browserName +" browser";  
+   //    document.querySelector("h3").innerText = browserName +" browser";  
 	</script>
+
     <script src="index.js"></script>
   </body>
 </html>
