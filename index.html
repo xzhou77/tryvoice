@@ -9,25 +9,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
   </head>
   <body>
+    <h3 style = "text-align: center;"></h3>
     <div id="xm-chat" style="display: inline;">
-        <div style = "width: 10%; float: left; align-content: left;">     
-            <h3></h3>
+        <div style = "width: 8%; float: left; align-content: left;">     
             </p>
-            <button id="xm_login_menu" class="menubtn" style="background-color: lightsalmon;">Login</button>
+            <button id="xm_login_menu" class="menubtn" style="background-color: black;"><img src = "assets/lock.svg" /></button>
             </p>
-            <button id="xm_voice_menu" class="menubtn" style="background-color: lightskyblue;">Conf</button>
+            <button id="xm_voice_menu" class="menubtn" style="background-color: black;"><img src = "assets/settings.svg" /></button>
             </p>
      <!--      <button id="xm_lang_menu" class="menubtn" style="background-color: lightskyblue;">Lang  </button>
           </p>
     //        <button id="xm_mute_menu" class="menubtn" style="background-color: lightskyblue;">Mute  </button>
     -->      </p>
-            <button id="start-btn" class="menubtn" style="background-color: lightseagreen;">Start </button>
+            <button id="start-btn" class="menubtn" style="background-color: black;"><img src= "assets/stop-circle.svg" /></button>
         </div>
         <div style = "margin-left: 10%;">
-            <div id="messages" style="height:42rem; width: 100%; overflow-y: auto; background-color: rgb(231, 230, 226);"></div>
+            <div id="messages" style="height:50rem; width: 100%; overflow-y: auto; background-color: rgb(231, 230, 226);"></div>
             <form>
-                <textarea name="prompt" rows="1" cols="77" placeholder="Ask XM ..."></textarea>
-                <button id="submit" class="menubtn" style="width: 3rem; height: 2rem;">Send</button>
+                <textarea name="prompt" rows="1" cols="82.5" placeholder="Ask XM ..."></textarea>
+                <button id="submit" class="menubtn" style="width: 3rem; height: 2rem;"><img src = "assets/play-circle.svg" /></button>
             </form>
         </div>
     </div>
@@ -84,7 +84,7 @@
    </body>
 
     <script>
-		var browserName = (function (agent) {
+	var browserName = (function (agent) {
          switch (true) {
             case agent.indexOf("edge") > -1: return "MS Edge";
             case agent.indexOf("edg/") > -1: return "Edge ( chromium based)";
@@ -97,7 +97,7 @@
          }
         }) (window.navigator.userAgent.toLowerCase());
 
-   //    document.querySelector("h3").innerText = browserName +" browser";  
+       document.querySelector("h3").innerText = "ROBO-HELPER";  
 	</script>
 
     <script src="index.js"></script>

@@ -15,6 +15,7 @@ var uname =   'user';
 var passwd = 'test';
 
 //Current settings
+var repeated = 0;
 var cs_settings = {lang : "en-US", mute: "no", start: "off"};
 
 const startBtn = document.querySelector("#start-btn");
@@ -62,8 +63,19 @@ recognition.onresult = async (e) => {
         case transcript.indexOf("Share") > -1: utter.text = " The following is our planned share structure: "; break;
         case transcript.indexOf("Balance sheet") > -1:
         case transcript.indexOf("balance sheet") > -1: utter.text = "The following is our estimation of balance sheet in 5 years: "; break;
+        case transcript.indexOf("你好") > -1: utter.text = "哈喽， 你好!"; break;
+        case transcript.indexOf("再见") > -1: utter.text = "下次见!"; break;
+        case transcript.indexOf("有趣") > -1: utter.text = "你听说过ChatGPT吗?"; break;
+        case transcript.indexOf("股权") > -1: utter.text = "下面是我们预想的股权结构: "; break;
+        case transcript.indexOf("营收") > -1: utter.text = "下面是我们预测的五年资产负债表： "; break;
+        case transcript.indexOf("标识") > -1: utter.text = "下面是我们公司标识： "; break;
+
         default: 
-            const response = await fetch('https://biosycle-chat.onrender.com', {
+	  if (repeated === 0) {
+		repeated = 1;
+		utter.text = "sorry, could you repeat please ?"; 
+	  } else {
+           const response = await fetch('https://biosycle-chat.onrender.com', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,11 +91,12 @@ recognition.onresult = async (e) => {
                 const parsedData = data.bot.trim(); // trims any trailing spaces/'\n'
                 utter.text = parsedData;
             } else {
-                    utter.text = "Sorry, I don't understand you. I am still learning.";
+                  utter.text = "Sorry, I don't understand you. I am still learning.";
             }
-    }
+           }
+	 }
 
-    message2.innerText = utter.text + " :XM";
+    message2.innerText = utter.text + " :ROBO";
     message2.classList.add("container");
     messageArea.appendChild(message2);
     
@@ -95,15 +108,15 @@ recognition.onresult = async (e) => {
         utter.volume = current_volume;
     }
 
-    if (transcript.indexOf("logo") > -1) {
+    if ((transcript.indexOf("logo") > -1) || (transcript.indexOf("标识") > -1)) {
        const img = document.createElement("img");
        img.src = "assets/BioSycle_logo.jpg";
        messageArea.appendChild(img);
-    } else if (transcript.indexOf("share") > -1) {
+    } else if ((transcript.indexOf("share") > -1) || (transcript.indexOf("股权") > -1)) {
        const img = document.createElement("img");
        img.src = "assets/shares.jpg";
        messageArea.appendChild(img);
-    } else if (transcript.indexOf("balance sheet") > -1) {
+    } else if ((transcript.indexOf("balance sheet") > -1) || (transcript.indexOf("营收") > -1)) {
        const img = document.createElement("img");
        img.src = "assets/balance.jpg";
        messageArea.appendChild(img);
@@ -186,8 +199,10 @@ voiceButton.addEventListener("click", (e) => {
     e.preventDefault();
     if (cs_settings.start === "on") {
         cs_settings.start = "off";
-        startBtn.innerHTML = "Start ";
-        startBtn.style.backgroundColor = "lightseagreen";
+    //    startBtn.innerHTML = "Start ";
+    //  startBtn.style.backgroundColor = "lightseagreen";
+	startBtn.innerHTML = '<img src= "assets/stop-circle.svg" />';
+	startBtn.style.backgroundColor = "black";
         recognition.stop();
     }
     document.getElementById("xm-voice").style.display = "inline";
@@ -216,13 +231,14 @@ backButton.addEventListener("click", (e) => {
 startBtn.addEventListener("click", () => {
     if (cs_settings.start === "off") {
         cs_settings.start = "on";
-        startBtn.innerHTML = "Stop ";
+      //  startBtn.innerHTML = "Stop ";
+        startBtn.innerHTML ='<img src= "assets/stop-circle.svg" />'
         startBtn.style.backgroundColor = "red";
         recognition.start();
       } else {
         cs_settings.start = "off";
-        startBtn.innerHTML = "Start ";
-        startBtn.style.backgroundColor = "lightseagreen";
+     //   startBtn.innerHTML = "Start ";
+        startBtn.style.backgroundColor = "black";
         recognition.stop();
       }
 });
