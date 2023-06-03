@@ -63,6 +63,13 @@ recognition.onresult = async (e) => {
         case transcript.indexOf("Share") > -1: utter.text = " The following is our planned share structure: "; break;
         case transcript.indexOf("Balance sheet") > -1:
         case transcript.indexOf("balance sheet") > -1: utter.text = "The following is our estimation of balance sheet in 5 years: "; break;
+        case transcript.indexOf("groceries") > -1: utter.text = "Sure, what do we need to buy ? "; break;
+        case transcript.indexOf("milk") > -1: utter.text = "Let's confirm 1 litre of milk, 1 pack of bread, and 2 cucumbers."; break;
+        case transcript.indexOf("Yes, thanks") > -1:  utter.text = "Ok, got it."; break;
+        case transcript.indexOf("lunch") > -1: utter.text = "Sure, what do you want for your lunch ? Noodle, burger, or fried rice. "; break;
+        case transcript.indexOf("fish") > -1: utter.text = "Ok, I will get the fish soup noodle for you."; break;
+        case transcript.indexOf("Around 2:00pm") > -1: utter.text = "Ok, I will make a booking to pick us at 2pm today. "; break;
+        case transcript.indexOf("Club") > -1: utter.text = "Yes, what time do you want to go to Island Club ?"; break;
         case transcript.indexOf("你好") > -1: utter.text = "哈喽， 你好!"; break;
         case transcript.indexOf("再见") > -1: utter.text = "下次见!"; break;
         case transcript.indexOf("有趣") > -1: utter.text = "你听说过ChatGPT吗?"; break;
