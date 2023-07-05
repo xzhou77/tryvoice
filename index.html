@@ -101,5 +101,19 @@
 	</script>
 
     <script src="index.js"></script>
+
+    <script type="text/javascript">
+        (function(w, d, x, id){
+          s=d.createElement('script');
+          s.src='https://db08fjupg2abb.cloudfront.net/amazon-connect-chat-interface-client.js';
+          s.async=1;
+          s.id=id;
+          d.getElementsByTagName('head')[0].appendChild(s);
+          w[x] =  w[x] || function() { (w[x].ac = w[x].ac || []).push(arguments) };
+        })(window, document, 'amazon_connect', '3f3e2785-d167-4591-985e-1ffe5b8b4f92');
+        amazon_connect('styles', { openChat: { color: '#ffffff', backgroundColor: '#123456'}, closeChat: { color: '#ffffff', backgroundColor: '#123456'} });
+        amazon_connect('snippetId', 'QVFJREFIZ2JTNzdvNlZBdTFZSVJkT0xad3RDb08wM2NZamVYWno2UE4rbHpYL2JuRlFITGhEaHBFN0FjZkx4Z1NoUTFWZ0k0QUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNNVVjYmxVdlRObDRrekNVV0FnRVFnQ3UyTkUvblE1UVRmck9uZ2NmdUNMUm4vSDk2TEJxZ2JhQlV0MWFmOEhBbEhRSWF3d0twQ0RpU0QyYWY6Ojg4U29oSjhYVHgzejJqcUJlQ2FHbS9zalJGemloL2FVeWxaSit0QnM2R01mQi83c0JGcFZFdG5GeWJMc0lyNyttWVhwbDBzYXVWUkRUOThkV1lTeTl3bjVCTXFtUXY4WXlvWDFETSt6Rlp5MHlsZzRDaVBZSGRXSmJNT2ZIRHlBVkc3SjMwRlFwOU1reFBIUFp1NW5aQnRLeVBSQUNBTT0=');
+        amazon_connect('supportedMessagingContentTypes', [ 'text/plain', 'text/markdown' ]);
+      </script>
   </body>
 </html>
