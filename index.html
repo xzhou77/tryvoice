@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Website</title>
+    <link rel="stylesheet" href="cart.css">
     <!-- for icons  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- bootstrap  -->
@@ -43,10 +44,41 @@
                             </ul>
                         </nav>
                         <div class="header-right">
-                            <a href="javascript:void(0)" class="header-btn header-cart">
+                            <a href="javascript:void(0)" onclick="shopbag()" class="header-btn header-cart">
                                 <i class="uil uil-shopping-bag"></i>
-                                <span class="cart-number">3</span>
+                              <!----  <span class="cart-number">3</span> -->
                             </a>
+                        </div>
+                        <div class="whole-cart-window hide">
+                            <h5>In Bag</h5>
+                            <div class="cart-wrapper">
+                               <!--- <div class="cart-item">
+                                       
+                                         <div class="details">
+                                             <h6>Item Name</h6>
+                                         
+                                              <span class="quantity">Quantity: 1</span>
+                                                 <span class="price">Price: $23.44</span>
+                                            
+                                         </div>
+                                         <div class="cancel"><i class="fas fa-window-close"></i></div>
+                                      </div> -->
+                              <!-- item 2 -->
+                               <!---     <div class="cart-item">
+                            
+                                        <div class="details">
+                                              <h6>Item Name</h6>
+                                    
+                                                <span class="quantity">Quantity: 1</span>
+                                                <span class="price">Price: $23.44</span>
+                                              
+                                        </div>
+                                        <div class="cancel"><i class="fas fa-window-close"></i></div>
+                                    </div> -->
+                            </div>
+                            <div class="subtotal">Subtotal: $0.00</div>
+                            <div class="checkout">Checkout</div>
+                            <div class="view-cart">View Cart</div>
                         </div>
                     </div>
                 </div>
@@ -160,7 +192,7 @@
                         <div class="menu-list-row">
                             <div class="row g-xxl-5 bydefault_show" id="menu-dish">
                                 <div class="col-lg-4 col-sm-6 dish-box-wp breakfast" data-cat="breakfast">
-                                    <div class="dish-box text-center">
+                                    <div data-id= "1" class="dish-box text-center">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/1.jpg" alt="">
                                         </div>
@@ -201,7 +233,7 @@
 
                                 <!-- 2 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp breakfast" data-cat="breakfast">
-                                    <div class="dish-box text-center">
+                                    <div data-id= "2" class="dish-box text-center">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/2.jpg" alt="">
                                         </div>
@@ -241,7 +273,7 @@
                                 </div>
                                 <!-- 3 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
-                                    <div class="dish-box text-center">
+                                    <div data-id= "3" class="dish-box text-center">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/3.jpg" alt="">
                                         </div>
@@ -282,7 +314,7 @@
 
                                 <!-- 4 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
-                                    <div class="dish-box text-center">
+                                    <div data-id= "4" class="dish-box text-center">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/4.png" alt="">
                                         </div>
@@ -323,7 +355,7 @@
 
                                 <!-- 5 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
-                                    <div class="dish-box text-center">
+                                    <div data-id= "5" class="dish-box text-center">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/5.png" alt="">
                                         </div>
@@ -363,7 +395,7 @@
                                 </div>
                                 <!-- 6 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
-                                    <div class="dish-box text-center">
+                                    <div data-id= "6" class="dish-box text-center">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/6.png" alt="">
                                         </div>
@@ -599,6 +631,8 @@
     <script src="assets/js/smooth-scroll.js"></script>
     <!-- custom js  -->
     <script src="main.js"></script>
+
+    <script src="assets/js/cart.js"></script>
 
     <script type="text/javascript">
         (function(w, d, x, id){
