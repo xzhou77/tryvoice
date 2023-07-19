@@ -371,7 +371,7 @@ ul {
         color: #ff8243;
     }
     .header-btn.header-cart {
-        display: none;
+        display: inline;
     }
     .header-btn {
         margin: 0;

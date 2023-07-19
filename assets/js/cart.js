@@ -118,9 +118,8 @@ function updateCartUI(){
         total = Math.round(total*100)/100
         cartItem.innerHTML =
         `
-
                        <div class="details">
-                           <h3>${value.name}</h3>
+                           <h6>${value.name}</h6>
    
                             <span class="quantity">Quantity: ${value.quantity}</span>
                                <span class="price">Price: $ ${price}</span>
@@ -134,7 +133,7 @@ function updateCartUI(){
         cartWrapper.append(cartItem)
     }
 
-    if(count > 0){
+    if(count >= 0){
         cartIcon.classList.add('non-empty')
         let root = document.querySelector(':root')
         root.style.setProperty('--after-content', `"${count}"`)
