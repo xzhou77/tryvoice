@@ -144,4 +144,83 @@ function updateCartUI(){
     cartIcon.classList.remove('non-empty')
 }
 document.addEventListener('DOMContentLoaded', ()=>{updateCartUI()})
+
+
+// Add codes for checkout page
+function checkout_view(){
+    const checkoutPage = document.getElementById('checkout')
+    const cartWrapper = document.querySelector('.cart-wrapper')
+
+    cartWrapper.innerHTML=" "
+    const items = LocalCart.getLocalCartItems()
+    if(items === null) return
+    let count = 0
+    let total = 0
+    for(const [key, value] of items.entries()){
+        const cartItem = document.createElement('div')
+        cartItem.classList.add('cart-item')
+        let price = value.price*value.quantity
+        price = Math.round(price*100)/100
+        count+=1
+        total += price
+        total = Math.round(total*100)/100
+        cartItem.innerHTML =
+        `
+                       <div class="details">
+                           <h6>${value.name}</h6>  
+                            <span class="quantity">Quantity: ${value.quantity}</span>
+                            <span class="price">Price: $ ${price}</span>
+                        
+                       </div>
+        `
+        cartWrapper.append(cartItem)
+    }
+
+    if(count > 0){
+        cartWrapper.innerHTML += `<span class="price">SubTotal: $${total}</span>`
     
+    
+    checkoutPage.innerHTML=
+    `
+
+    <div class="container"> 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="sec-title text-center mb-5">
+                    
+                    <p class="sec-sub-title mb-3"><a href="#menu" onclick="order_more()">Order More</a></p>
+                    <h4 style = "text-align: center; color: blue;">
+                        Please check your ordered items </h4>
+                    <div class="sec-title-shape mb-4">
+                        <img src="assets/images/title-shape.svg" alt="">
+                     </div>
+                </div>` + cartWrapper.innerHTML +
+    `        </div>
+        </div>    </p>
+        <form class="order-form">
+        <label for="fname">Your name: </label> <br>
+        <input type="text" id="fname" name="fname" value="Your Name here"><br>
+        <label for="daddress">Phone Number: </label> <br>
+        <input type="tel" value="0000000000"> <br>
+        <input type="radio" id="ppick" name="ppick" value="PickUp">
+        <label for="ppick">Pick Up</label><br>
+        <input type="radio" id="ddelivery" name="ddlivery" value="Delivery">
+        <label for="ddlivery">Delivery</label><br> 
+        <label for="dtime">Pickup or Delivery Time:</label>
+        <input type="time" id="dtime" name="dtime" value=""><br>
+        <label for="daddress">Address:</label><br>
+        <input type="text" id="daddress" name="daddress size="80" value="default unit, default street address, postal code"><br>
+        
+      </form> </p>
+      <p class="sec-sub-title mb-3" style="background-color:brown">Check Out</p> 
+    </div>
+
+    `
+    }
+}
+    
+function order_more(){
+    const checkoutPage = document.getElementById('checkout')
+        
+    checkoutPage.innerHTML= ``
+}
