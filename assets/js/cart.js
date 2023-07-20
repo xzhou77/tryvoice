@@ -1,6 +1,7 @@
 class CartItem{
  //   constructor(name, desc, img, price){
-    constructor(name, price){
+    constructor(id, name, price){
+        this.id = id
         this.name = name
         this.price = price
         this.quantity = 1
@@ -70,7 +71,7 @@ function addItemFunction(e){
     let price = e.target.parentElement.parentElement.previousElementSibling.children[0].textContent
     price = price.replace("USD ", '')
  //   const item = new CartItem(name, desc, img, price)
-    const item = new CartItem(name, price)
+    const item = new CartItem(id, name, price)
     LocalCart.addItemToLocalCart(id, item)
  console.log(price)
 }
@@ -120,7 +121,7 @@ function updateCartUI(){
         `
                        <div class="details">
                            <h6>${value.name}</h6>
-   
+                            
                             <span class="quantity">Quantity: ${value.quantity}</span>
                                <span class="price">Price: $ ${price}</span>
                            </p>
@@ -167,7 +168,7 @@ function checkout_view(){
         cartItem.innerHTML =
         `
                        <div class="details">
-                           <h6>${value.name}</h6> 
+                           <h6>${value.name}</h6> <img src="assets/images/dish/${value.id}.jpg">
                             <span class="quantity">Quantity: ${value.quantity}  </span>
                             <span class="price">Price: $ ${price}</span>
                             
@@ -207,7 +208,7 @@ function checkout_view(){
         <input type="radio" id="ppick" name="delivery-pickup" value="PickUp">
         <label for="ppick">Pick Up</label><br>
         <input type="radio" id="ddelivery" name="delivery-pickup" value="Delivery">
-        <label for="ddlivery">Delivery</label><br> 
+        <label for="ddelivery">Delivery</label><br> 
         <label for="dtime">Pickup or Delivery Time:</label>
         <input type="time" id="dtime" name="dtime" value=""><br>
         <label for="daddress">Address:</label><br>

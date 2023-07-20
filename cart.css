@@ -119,12 +119,12 @@ margin-top: 35%;
  }
 .non-empty::after{
   content: var(--after-content);
-  font-size: 25px;
+  font-size: 15px;
   width:25px;
   display: inline-block;
   text-align: center;
   position: relative;
-  top:-20px;
+  top:-22px;
   right:20%;
   background-color: red;
   border-radius: 50%;
@@ -163,6 +163,6 @@ margin-top: 35%;
     cursor: pointer;
     background-color: brown;
     border-radius: 3px;
-    font-size: large;
+    font-size: medium;
     color:#fff
 }

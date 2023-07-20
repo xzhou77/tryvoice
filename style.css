@@ -190,7 +190,10 @@ ul {
     outline: none !important;
     padding: 10px 15px;
     color: #0d0d25;
-    -webkit-appearance: none;
+    appearance: none;
+        -moz-appearance: none; /* Firefox */
+        -webkit-appearance: none; /* Safari, Chrome, newer versions of Edge */
+        -ms-appearance: none; /* Older versions of Edge */
     border-radius: 10px;
     border: none;
     background: #f8f8f8;
