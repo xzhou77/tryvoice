@@ -50,7 +50,7 @@ h2{
     text-align: right;
     padding:5%;
 }
-.checkout, .view-cart{
+.checkout, .view-cart, .close-bag{
     width:95%;
     text-align: center;
     cursor: pointer;
@@ -60,11 +60,12 @@ h2{
     margin:10px auto;
     padding:10px 15px;
 }
-.view-cart{
+.view-cart, .close-bag{
     background-color: #fff;
     border: 2px solid brown;
     color: brown;
 }
+
 .cart-icon{
     text-align: right;
 }
