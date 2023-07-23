@@ -18,14 +18,18 @@ class LocalCart{
         return new Map(Object.entries(JSON.parse(cart)))
     }
 
-    static addItemToLocalCart(id, item, e){
+    static addItemToLocalCart(id, item){
         let cart = LocalCart.getLocalCartItems()
 
-        let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
+     //   let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
        
-        e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
-                = ordered + 1
-        
+     //   e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
+     //           = ordered + 1
+     //   const selector = '[data-id="' + id + '"]'
+        let ordered = document.querySelector('[data-id="' + id + '"]')
+        let ordered_no = parseInt(ordered.children[3].children[0].children[1].children[1].textContent) + 1
+        ordered.children[3].children[0].children[1].children[1].textContent = ordered_no
+
         if(cart.has(id)){
             let mapItem = cart.get(id)
             mapItem.quantity +=1
@@ -38,15 +42,21 @@ class LocalCart{
         
     }
 
-    static removeItemFromCart(id, e){
+    static removeItemFromCart(id){
     let cart = LocalCart.getLocalCartItems()
 
-    let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
-    if (ordered > 0) {
-        e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
-            = ordered - 1
-    }
+   // let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
+   // if (ordered > 0) {
+   //     e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
+   //         = ordered - 1
+    //}
 
+    let ordered = document.querySelector('[data-id="' + id + '"]')
+    let ordered_no = parseInt(ordered.children[3].children[0].children[1].children[1].textContent) -1
+    if (ordered_no >=0) {
+        ordered.children[3].children[0].children[1].children[1].textContent = ordered_no
+    }
+    
     if(cart.has(id)){
         let mapItem = cart.get(id)
         if(mapItem.quantity>1)
@@ -91,11 +101,9 @@ function minusItemFunction(e){
     price = price.replace("USD ", '')
  //   const item = new CartItem(name, desc, img, price)
     const item = new CartItem(id, name, price)
-    LocalCart.removeItemFromCart(id, e)
+    LocalCart.removeItemFromCart(id)
 
-   // let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
-    //e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
-   //     = ordered
+
 
  console.log(price)
 }
@@ -111,7 +119,7 @@ function addItemFunction(e){
     price = price.replace("USD ", '')
  //   const item = new CartItem(name, desc, img, price)
     const item = new CartItem(id, name, price)
-    LocalCart.addItemToLocalCart(id, item, e)
+    LocalCart.addItemToLocalCart(id, item)
 
   //  let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
   //  e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
@@ -163,6 +171,8 @@ function updateCartUI(){
         total = Math.round(total*100)/100
         cartItem.innerHTML =
         `
+                       <div class="cancel"><i class="uil uil-plus"></i></div>
+
                        <div class="details">
                            <h6>${value.name}</h6>
                             
@@ -170,12 +180,15 @@ function updateCartUI(){
                                <span class="price">Price: $ ${price}</span>
                            </p>
                        </div>
-         `
-        //               <div class="cancel"><i class="fas fa-window-close"></i></div>
-        
+                       
+                       <div class="cancel"><i class="uil uil-minus"></i></div>
+        `
        cartItem.lastElementChild.addEventListener('click', ()=>{
            LocalCart.removeItemFromCart(key)
        })
+       cartItem.firstElementChild.addEventListener('click', ()=>{
+        LocalCart.addItemToLocalCart(key, null)
+    })
         cartWrapper.append(cartItem)
     }
 
