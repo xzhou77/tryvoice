@@ -29,9 +29,9 @@ h1{
     color: #fff;
 }
 .cart-box{
-    width:26% !important;
+    width:46% !important;
     position: absolute;
-    left:72%;
+    left:52%;
     top:25%;
     /* border:solid 1px blue; */
     padding:10px 20px;

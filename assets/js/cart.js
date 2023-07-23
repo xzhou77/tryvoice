@@ -170,23 +170,25 @@ function updateCartUI(){
         total += price
         total = Math.round(total*100)/100
         cartItem.innerHTML =
+       // `
+       //                <div class="cancel"><i class="uil uil-plus"></i></div>
         `
-                       <div class="cancel"><i class="uil uil-plus"></i></div>
-
                        <div class="details">
                            <h6>${value.name}</h6>
-                            
+                           <button class="dish-add-btn"><i class="uil uil-plus"></i></button>
+                           <button class="dish-minus-btn"><i class="uil uil-minus"></i></button>
                             <span class="quantity">Quantity: ${value.quantity}</span>
                                <span class="price">Price: $ ${price}</span>
                            </p>
                        </div>
-                       
-                       <div class="cancel"><i class="uil uil-minus"></i></div>
-        `
-       cartItem.lastElementChild.addEventListener('click', ()=>{
+                   
+         `
+        //               <div class="cancel"><i class="uil uil-minus"></i></div>
+        
+       cartItem.firstElementChild.children[2].addEventListener('click', ()=>{
            LocalCart.removeItemFromCart(key)
        })
-       cartItem.firstElementChild.addEventListener('click', ()=>{
+       cartItem.firstElementChild.children[1].addEventListener('click', ()=>{
         LocalCart.addItemToLocalCart(key, null)
     })
         cartWrapper.append(cartItem)
