@@ -214,7 +214,10 @@ function checkout_view(){
 
     cartWrapper.innerHTML=" "
     const items = LocalCart.getLocalCartItems()
-    if(items === null) return
+    if(items === null) {
+        window.location.href = "#home"
+        return
+    }
     let count = 0
     let total = 0
     for(const [key, value] of items.entries()){
@@ -236,6 +239,7 @@ function checkout_view(){
         `
         
         cartWrapper.append(cartItem)
+
     }
 
     hide_all()
@@ -251,7 +255,7 @@ function checkout_view(){
             <div class="col-lg-12">
                 <div class="sec-title text-center mb-5">
                     
-                    <p class="sec-sub-title mb-3"><a href="#menu" onclick="order_more()">Order More</a></p>
+                    <p class="sec-sub-title mb-3"><a href="#menu" onclick="order_more()">Order More | Go Back</a></p>
                     <h4 style = "text-align: center; color: blue;">
                         Please check your ordered items </h4>
                     <div class="sec-title-shape mb-4">
@@ -276,10 +280,32 @@ function checkout_view(){
         
       </form> </p>
       <p class="sec-sub-title mb-3" style="background-color:brown">Check Out</p> 
+      <p class="sec-sub-title mb-3"><a href="#menu" onclick="order_more()">Order More | Go Back</a></p>
     </div>
 
     `
     }
+    else
+    {
+        checkoutPage.innerHTML=
+    `
+    <div class="container"> 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="sec-title text-center mb-5">
+                    
+                    <p class="sec-sub-title mb-3"><a href="#menu" onclick="order_more()">Order More | Go Back</a></p>
+                    <h4 style = "text-align: center; color: blue;">
+                        Nothing in your shopping bag ! </h4>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    `
+    }
+
+    window.location.href = "#checkout"
 }
     
 function order_more(){
@@ -327,3 +353,27 @@ function hide_cart() {
     wholeCartWindow.classList.add('hide')
     
 }
+
+// Before unload, clear the cart
+
+  // Add event listener for the beforeunload event
+  window.addEventListener("beforeunload", (event) => {
+    // Customize the confirmation message
+    event.returnValue = "Are you sure you want to leave this page?"; // This will display a confirmation dialog
+  });
+  
+  // Function to handle the user's response from the confirmation dialog
+  function handleConfirmation(event) {
+    // Check if the user confirmed leaving the page
+    if (event.returnValue !== undefined) {
+      console.log("User confirmed leaving the page.");
+      localStorage.clear()
+    } else {
+      console.log("User decided to stay on the page.");
+      // Add any additional actions you want to perform if the user stays on the page
+    }
+  }
+  
+  // Add event listener to the 'unload' event to handle the user's response
+  window.addEventListener("unload", handleConfirmation);
+  
