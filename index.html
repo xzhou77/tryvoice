@@ -53,18 +53,6 @@
                         <div class="whole-cart-window hide">
                             <h5>Item(s) In Bag</h5>
                             <div class="cart-wrapper">
-                               <!--- <div class="cart-item">
-                                       
-                                         <div class="details">
-                                             <h6>Item Name</h6>
-                                         
-                                              <span class="quantity">Quantity: 1</span>
-                                                 <span class="price">Price: $23.44</span>
-                                            
-                                         </div>
-                                         <div class="cancel"><i class="fas fa-window-close"></i></div>
-                                      </div> -->
-                              <!-- item 2 -->
                             </div>
                             <div class="subtotal">Subtotal: $0.00</div>
                             <div class="close-bag" onclick="hide_cart()">Close Bag</div>
@@ -152,7 +140,7 @@
                                 <p class="sec-sub-title mb-3">Main Menu</p>
                                 <h4 style = "text-align: center; color: brown;">
                                     Please click on the right bottom <img src="assets/chat.png" width ="30px" height = "30px"> 
-                                    to order with us directly.</h4>
+                                    to order with us or click on the menu item directly.</h4>
                         
                                 <div class="sec-title-shape mb-4">
                                     <img src="assets/images/title-shape.svg" alt="">
@@ -161,10 +149,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-8 m-auto">
-                            <div class="about-video">
-                                <a href="#menu"><img src="assets/images/ChinaGardenMenu.jpg" alt=""></a>
-                            </div>
+                        <div class="col-lg-6 mt-5">
+                            <h2 class="text-center">Lunch Special</h2>
+                            <ul class="menu-list">
+                                <li><a href="#dish1">Kung Pao Chicken</a></li>
+                                <li><a href="#dish2">Chicken Lo Mein</a></li>
+                                <li><a href="#dish3">Chinese Combo</a></li>
+                                <li><a href="#dish4">Mongolia Beef</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 mt-5">
+                            <h2 class="text-center">Dinner Menu</h2>
+                            <ul class="menu-list">
+                                <li><a href="#dish5">Sesame Chicken</a></li>
+                                <li><a href="#dish6">General Tao's Chicken</a></li>
+                                <li><a href="#dish7">Beef Lo Mein</a></li>
+                                <li><a href="#dish8">Traditional Meatball</a></li>    
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -214,8 +215,8 @@
                         </div>
                         <div class="menu-list-row">
                             <div class="row g-xxl-5 bydefault_show" id="menu-dish">
-                                <div class="col-lg-4 col-sm-6 dish-box-wp breakfast" data-cat="breakfast">
-                                    <div data-id= "1" class="dish-box text-center">
+                                <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
+                                    <div data-id= "1" class="dish-box text-center" id="dish1">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/1.jpg" alt="">
                                         </div>
@@ -224,7 +225,7 @@
                                             <i class="uil uil-star"></i>
                                         </div>
                                         <div class="dish-title">
-                                            <h3 class="h3-title">Szchuan Chicken</h3>
+                                            <h3 class="h3-title">Kung Pao Chicken</h3>
                                             <p>120 calories</p>
                                         </div>
                                         <div class="dish-info">
@@ -262,8 +263,8 @@
                                 </div>
 
                                 <!-- 2 -->
-                                <div class="col-lg-4 col-sm-6 dish-box-wp breakfast" data-cat="breakfast">
-                                    <div data-id= "2" class="dish-box text-center">
+                                <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
+                                    <div data-id= "2" class="dish-box text-center" id="dish2">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/2.jpg" alt="">
                                         </div>
@@ -272,7 +273,7 @@
                                             <i class="uil uil-star"></i>
                                         </div>
                                         <div class="dish-title">
-                                            <h3 class="h3-title">Chilli Chicken</h3>
+                                            <h3 class="h3-title">Chicken Lo Mein</h3>
                                             <p>80 calories</p>
                                         </div>
                                         <div class="dish-info">
@@ -309,7 +310,7 @@
                                 </div>
                                 <!-- 3 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
-                                    <div data-id= "3" class="dish-box text-center">
+                                    <div data-id= "3" class="dish-box text-center" id="dish3">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/3.jpg" alt="">
                                         </div>
@@ -318,7 +319,7 @@
                                             <i class="uil uil-star"></i>
                                         </div>
                                         <div class="dish-title">
-                                            <h3 class="h3-title">Fried Noodles</h3>
+                                            <h3 class="h3-title">Chinese Combo</h3>
                                             <p>100 calories</p>
                                         </div>
                                         <div class="dish-info">
@@ -356,7 +357,7 @@
 
                                 <!-- 4 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
-                                    <div data-id= "4" class="dish-box text-center">
+                                    <div data-id= "4" class="dish-box text-center" id="dish4">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/4.jpg" alt="">
                                         </div>
@@ -365,7 +366,7 @@
                                             <i class="uil uil-star"></i>
                                         </div>
                                         <div class="dish-title">
-                                            <h3 class="h3-title">Hunan Chicken</h3>
+                                            <h3 class="h3-title">Mongolia Beef</h3>
                                             <p>120 calories</p>
                                         </div>
                                         <div class="dish-info">
@@ -403,7 +404,7 @@
 
                                 <!-- 5 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
-                                    <div data-id= "5" class="dish-box text-center">
+                                    <div data-id= "5" class="dish-box text-center" id="dish5">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/5.jpg" alt="">
                                         </div>
@@ -412,7 +413,7 @@
                                             <i class="uil uil-star"></i>
                                         </div>
                                         <div class="dish-title">
-                                            <h3 class="h3-title">Fried Rice</h3>
+                                            <h3 class="h3-title">Sesame Chicken</h3>
                                             <p>120 calories</p>
                                         </div>
                                         <div class="dish-info">
@@ -449,7 +450,7 @@
                                 </div>
                                 <!-- 6 -->
                                 <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
-                                    <div data-id= "6" class="dish-box text-center">
+                                    <div data-id= "6" class="dish-box text-center" id="dish6">
                                         <div class="dist-img">
                                             <img src="assets/images/dish/6.jpg" alt="">
                                         </div>
@@ -458,7 +459,99 @@
                                             <i class="uil uil-star"></i>
                                         </div>
                                         <div class="dish-title">
-                                            <h3 class="h3-title">Momos</h3>
+                                            <h3 class="h3-title">General Tao's Chicken</h3>
+                                            <p>120 calories</p>
+                                        </div>
+                                        <div class="dish-info">
+                                            <ul>
+                                                <li>
+                                                    <p>Type</p>
+                                                    <b>Non Veg</b>
+                                                </li>
+                                                <li>
+                                                    <p>Ordered</p>
+                                                    <b>0</b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dist-bottom-row">
+                                            <ul>
+                                                <li>
+                                                    <button class="dish-minus-btn">
+                                                        <i class="uil uil-minus"></i>
+                                                    </button>
+                
+                                                </li>
+                                                <li>
+                                                    <b>USD 6.75</b>
+                                                </li>
+                                                <li>
+                                                    <button class="dish-add-btn">
+                                                        <i class="uil uil-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 7 -->
+                                <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
+                                    <div data-id= "7" class="dish-box text-center" id="dish7">
+                                        <div class="dist-img">
+                                            <img src="assets/images/dish/7.jpg" alt="">
+                                        </div>
+                                        <div class="dish-rating">
+                                            5
+                                            <i class="uil uil-star"></i>
+                                        </div>
+                                        <div class="dish-title">
+                                            <h3 class="h3-title">Beef Lo Mein</h3>
+                                            <p>120 calories</p>
+                                        </div>
+                                        <div class="dish-info">
+                                            <ul>
+                                                <li>
+                                                    <p>Type</p>
+                                                    <b>Non Veg</b>
+                                                </li>
+                                                <li>
+                                                    <p>Ordered</p>
+                                                    <b>0</b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dist-bottom-row">
+                                            <ul>
+                                                <li>
+                                                    <button class="dish-minus-btn">
+                                                        <i class="uil uil-minus"></i>
+                                                    </button>
+                
+                                                </li>
+                                                <li>
+                                                    <b>USD 6.75</b>
+                                                </li>
+                                                <li>
+                                                    <button class="dish-add-btn">
+                                                        <i class="uil uil-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 8 -->
+                                <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
+                                    <div data-id= "8" class="dish-box text-center" id="dish8">
+                                        <div class="dist-img">
+                                            <img src="assets/images/dish/8.jpg" alt="">
+                                        </div>
+                                        <div class="dish-rating">
+                                            5
+                                            <i class="uil uil-star"></i>
+                                        </div>
+                                        <div class="dish-title">
+                                            <h3 class="h3-title">Traditional Meatball</h3>
                                             <p>120 calories</p>
                                         </div>
                                         <div class="dish-info">
