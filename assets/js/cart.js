@@ -21,11 +21,6 @@ class LocalCart{
     static addItemToLocalCart(id, item){
         let cart = LocalCart.getLocalCartItems()
 
-     //   let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
-       
-     //   e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
-     //           = ordered + 1
-     //   const selector = '[data-id="' + id + '"]'
         let ordered = document.querySelector('[data-id="' + id + '"]')
         let ordered_no = parseInt(ordered.children[3].children[0].children[1].children[1].textContent) + 1
         ordered.children[3].children[0].children[1].children[1].textContent = ordered_no
@@ -44,12 +39,6 @@ class LocalCart{
 
     static removeItemFromCart(id){
     let cart = LocalCart.getLocalCartItems()
-
-   // let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
-   // if (ordered > 0) {
-   //     e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
-   //         = ordered - 1
-    //}
 
     let ordered = document.querySelector('[data-id="' + id + '"]')
     let ordered_no = parseInt(ordered.children[3].children[0].children[1].children[1].textContent) -1
@@ -104,7 +93,6 @@ function minusItemFunction(e){
     LocalCart.removeItemFromCart(id)
 
 
-
  console.log(price)
 }
 
@@ -121,9 +109,6 @@ function addItemFunction(e){
     const item = new CartItem(id, name, price)
     LocalCart.addItemToLocalCart(id, item)
 
-  //  let ordered = parseInt(e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent)
-  //  e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.children[0].children[1].children[1].textContent
-    //     = ordered + 1   
 
  console.log(price)
 }
@@ -170,8 +155,6 @@ function updateCartUI(){
         total += price
         total = Math.round(total*100)/100
         cartItem.innerHTML =
-       // `
-       //                <div class="cancel"><i class="uil uil-plus"></i></div>
         `
                        <div class="details">
                            <h6>${value.name}</h6>
@@ -264,11 +247,11 @@ function checkout_view(){
                 </div> <div class="checkout-wrapper">` + cartWrapper.innerHTML +
     ` </div>       </div>
         </div>    </p>
-        <form class="order-form">
+     <form class="order-form">
         <label for="fname">Your name: </label> <br>
-        <input type="text" id="fname" name="fname" value="-"><br>
-        <label for="daddress">Phone Number: </label> <br>
-        <input type="tel" value=""> <br>
+        <input type="text" id="fname" name="fname" value=""><br>
+        <label for="ftel">Phone Number: </label> <br>
+        <input type="tel" id="ftel" name="ftel" value=""> <br>
         <input type="radio" id="ppick" name="delivery-pickup" value="PickUp">
         <label for="ppick">Pick Up</label><br>
         <input type="radio" id="ddelivery" name="delivery-pickup" value="Delivery">
@@ -276,10 +259,10 @@ function checkout_view(){
         <label for="dtime">Pickup or Delivery Time:</label>
         <input type="time" id="dtime" name="dtime" value=""><br>
         <label for="daddress">Address:</label><br>
-        <input type="text" id="daddress" name="daddress size="80" value="-"><br>
+        <input type="text" id="daddress" name="daddress size="80" value=""><br>
         
       </form> </p>
-      <p class="sec-sub-title mb-3" style="background-color:brown">Check Out</p> 
+      <p class="sec-sub-title mb-3" style="background-color:brown" onclick="handleCheckout()">Check Out</p> 
       <p class="sec-sub-title mb-3"><a href="#menu" onclick="order_more()">Order More | Go Back</a></p>
     </div>
 
@@ -321,13 +304,13 @@ function order_more(){
     const menu_i = document.querySelector('.our-menu')
     const blog_i = document.querySelector('.blog-sec')
 
-    footer_i.style.display = "inline"
     header_i.style.display = "inline"
     banner_i.style.display = "inline"
     about_i.style.display = "inline"
-    book_i.style.display = "inline"
-    menu_i.style.display = "inline"
     blog_i.style.display = "inline"
+    menu_i.style.display = "inline"
+    book_i.style.display = "inline"
+    footer_i.style.display = "inline"
 }
 
 function hide_all() { 
@@ -353,6 +336,67 @@ function hide_cart() {
     wholeCartWindow.classList.add('hide')
     
 }
+
+// handle submit of the order
+
+async function handleCheckout() {
+    const checkoutForm = document.querySelector('.order-form')
+
+    let ffood = ''
+    let fmethod = "pickup"
+    const items = LocalCart.getLocalCartItems()
+  
+    if (checkoutForm.ddelivery.checked) {
+        fmethod = "Delivery"
+    }
+
+    if(items === null) return
+    
+    for (const [key, value] of items.entries()){
+       
+        ffood = ffood + value.quantity + " " + value.name + "; "
+    }
+
+    const response = await fetch('https://mysql-api-zxm.onrender.com/cafe', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+                        name: checkoutForm.fname.value,
+                        tel: checkoutForm.ftel.value,
+                        addr: checkoutForm.daddress.value,
+                        time: checkoutForm.dtime.value,
+                        method: fmethod,
+                        food: ffood,
+                })
+        
+        })
+
+    const checkoutPage = document.getElementById('checkout')
+
+    localStorage.clear()
+
+    checkoutPage.innerHTML=
+    `
+        <div class="container"> 
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-title text-center mb-5">
+                        
+                        <p class="sec-sub-title mb-3"><a href="#menu" onclick="location.reload()">Order Again</a></p>
+                        <h4 style = "text-align: center; color: blue;">
+                            Your order has been submitted. Thanks for ordering from China Garden ! </h4>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    
+    `  
+    window.location.href = "#checkout"
+
+}
+
 
 // Before unload, clear the cart
 
