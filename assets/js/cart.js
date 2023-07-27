@@ -289,6 +289,7 @@ function checkout_view(){
     }
 
     window.location.href = "#checkout"
+    window.scrollTo(0, 0)
 }
     
 function order_more(){
@@ -357,6 +358,28 @@ async function handleCheckout() {
         ffood = ffood + value.quantity + " " + value.name + "; "
     }
 
+    const checkoutPage = document.getElementById('checkout')
+
+    checkoutPage.innerHTML=
+    `
+        <div class="container"> 
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-title text-center mb-5">
+                        </p>
+                        </p>
+                        <h4 style = "text-align: center; color: blue;">
+                            Please wait, we are sending your order ... </h4>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    
+    `  
+    window.location.href = "#checkout"
+
+    window.scrollTo(0,0)
+
     const response = await fetch('https://mysql-api-zxm.onrender.com/cafe', {
         method: 'POST',
         headers: {
@@ -372,8 +395,6 @@ async function handleCheckout() {
                 })
         
         })
-
-    const checkoutPage = document.getElementById('checkout')
 
     localStorage.clear()
 
@@ -393,7 +414,7 @@ async function handleCheckout() {
         </div>
     
     `  
-    window.location.href = "#checkout"
+    
 
 }
 

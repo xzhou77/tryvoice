@@ -14,7 +14,7 @@ recognition.maxAlternatives = 1;
 
 const synth = window.speechSynthesis;
 
-let utter = new SpeechSynthesisUtterance("Hi This is Mathew from China Garden. Would like to order food or book a table ?");
+let utter = new SpeechSynthesisUtterance("Hi This is Mathew from China Garden. Would you like to order food or book a table ?");
 let current_volume = 0.8;
 utter.onend = () => {
     if ((cs_settings.start === "on") && (cs_settings.mute === "no"))
@@ -30,10 +30,10 @@ recognition.onresult = async (e) => {
 
     if (in_order >0) {
         switch(true) {
-            case in_order === 1: utter.text = "How many " + transcript + " do you want?"; in_order = 2; break;
-            case in_order === 2: utter.text = "When do you want to pick up? "; in_order = 3; break;
-            case in_order === 3: utter.text = "what is your name?"; in_order = 4; break;
-            case in_order === 4: utter.text = "I have taken your order. Thanks for ordering with us " + transcript + " !"; in_order = 0; 
+            case in_order === 1: utter.text = "Sure, how many " + transcript + " do you want?"; in_order = 2; break;
+            case in_order === 2: utter.text = "May I know When you want to pick up? "; in_order = 3; break;
+            case in_order === 3: utter.text = "what is your name please ?"; in_order = 4; break;
+            case in_order === 4: utter.text = "Ok, I have taken your order. Thanks for ordering with us " + transcript + " !"; in_order = 0; 
             default: cs_settings.start = "off";
                     startBtn.style.backgroundColor = "white";
                     recognition.stop();
@@ -43,10 +43,10 @@ recognition.onresult = async (e) => {
     else
     if (in_book >0) {
         switch(true) {
-            case in_book === 1: utter.text = "How many people will dine with you ?"; in_book = 2; break;
-            case in_book === 2: utter.text = "When do you want to come? "; in_book = 3; break;
-            case in_book === 3: utter.text = "what is your name?"; in_book = 4; break;
-            case in_book === 4: utter.text = "I have made a booking for you. Thanks for booking with us " + transcript + "!"; in_book = 0; 
+            case in_book === 1: utter.text = "May I kow many people will dine with you ?"; in_book = 2; break;
+            case in_book === 2: utter.text = "Could you please tell me when you want to come ? "; in_book = 3; break;
+            case in_book === 3: utter.text = "What is your name please?"; in_book = 4; break;
+            case in_book === 4: utter.text = "Ok, I have made a booking for you. Thanks for booking with us " + transcript + "!"; in_book = 0; 
             default: cs_settings.start = "off";
                     startBtn.style.backgroundColor = "white";
                     recognition.stop();
@@ -116,7 +116,7 @@ recognition.onresult = async (e) => {
     if (cs_settings.mute === "no") {
          synth.speak(utter);
          if (cs_settings.start === "off")
-            utter.text = "Hi This is Mathew from China Garden. Would like to order food or book a table ?";
+            utter.text = "Hi This is Mathew from China Garden. Would you like to order food or book a table ?";
         } else {
             utter.volume = 0;
             synth.speak(utter);

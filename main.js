@@ -180,9 +180,34 @@ jQuery(window).on('load', function () {
 //    }, 500);
 //});
 
-$('a[href*="#"]').click(function(){
-    $('html, body').animate({
-        scrollTop: $( $(this).attr('href') ).offset().top - 50
-    }, 500);
-    return false;
-});
+//$('a[href*="#"]').click(function(){
+//    $('html, body').animate({
+//        scrollTop: $( $(this).attr('href') ).offset().top - 50
+//    }, 500);
+//    return false;
+//});
+
+/*function smoothScrollTo(targetElement) {
+    const targetOffsetTop = targetElement.offsetTop - 20;
+    window.scrollTo({
+      top: targetOffsetTop,
+      behavior: "smooth"
+    });
+  }
+  
+  // Get all anchor elements with href containing '#'
+  const anchorElements = document.querySelectorAll("a[href*='#']");
+  
+  // Add click event listeners to each anchor element
+  anchorElements.forEach(anchorElement => {
+    anchorElement.addEventListener("click", function (event) {
+      const targetId = this.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        event.preventDefault();
+        smoothScrollTo(targetElement);
+      }
+    });
+  });
+  */
